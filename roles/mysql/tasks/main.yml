@@ -1,0 +1,13 @@
+- name: Install Mysql package
+  become: true
+  become_user: root
+  apt: name={{ item }} state=present
+  with_items:
+    - mysql-server
+
+- name: start mysql
+  become: true
+  become_user: root
+  systemd:
+    name: mysql
+    state: started

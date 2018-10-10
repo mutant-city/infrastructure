@@ -1,0 +1,9 @@
+- name: Configure nick_aws
+  hosts: nick_aws
+  remote_user: ubuntu
+  roles:
+    - environment
+    - mysql
+    - nginx
+    - php
+    - wordpress

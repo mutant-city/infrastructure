@@ -1,0 +1,22 @@
+[
+  {
+    "ParameterKey": "InstanceType",
+    "ParameterValue": "t2.medium"
+  },
+  {
+    "ParameterKey": "AmiId",
+    "ParameterValue": "ami-0bbe6b35405ecebdb"
+  },
+  {
+    "ParameterKey": "SecurityGroupIds",
+    "ParameterValue": "sg-cd857dbe"
+  },
+  {
+    "ParameterKey": "KeyName",
+    "ParameterValue": "nick-personal-aws"
+  },
+  {
+    "ParameterKey": "EIPId",
+    "ParameterValue": "eipalloc-0dfbe9072d1b25c26"
+  }
+]

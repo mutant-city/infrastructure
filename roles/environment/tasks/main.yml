@@ -1,0 +1,12 @@
+- name: Update packages
+  become: true
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Setup Environment
+  become: true
+  apt: name={{ item }} state=present
+  with_items:
+    - python
+    - python-mysqldb

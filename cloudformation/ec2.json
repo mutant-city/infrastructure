@@ -1,0 +1,69 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Ec2 Instance",
+  "Parameters": {
+    "AmiId": {
+      "Description": "The AMI id you would like to use",
+      "Type": "AWS::EC2::Image::Id",
+      "ConstraintDescription": "must be the ID of an existing AMI.",
+      "Default": "ami-0bbe6b35405ecebdb"
+    },
+    "SecurityGroupIds": {
+      "Description": "The ID's of the Security Groups you're interested in using.",
+      "Type": "List<AWS::EC2::SecurityGroup::Id>",
+      "ConstraintDescription": "must be the ID of an existing security group."
+    },
+    "InstanceType": {
+      "Description": "WebServer EC2 instance type",
+      "Type": "String",
+      "Default": "t2.medium",
+      "AllowedValues": [
+        "t1.micro",
+        "t2.nano",
+        "t2.micro",
+        "t2.small",
+        "t2.medium"
+      ]
+    },
+    "KeyName": {
+      "Description": "Name of an existing EC2 KeyPair to enable SSH access to the instance",
+      "Type": "AWS::EC2::KeyPair::KeyName",
+      "ConstraintDescription": "must be the name of an existing EC2 KeyPair."
+    },
+    "EIPId": {
+      "Description": "The ID of the Elastic IP you would like to use",
+      "Type": "String",
+      "ConstraintDescription": "must be the ID of an existing Elastic IP ."
+    }
+  },
+  "Resources": {
+    "IPAssoc": {
+      "Type": "AWS::EC2::EIPAssociation",
+      "Properties": {
+        "InstanceId": {
+          "Ref": "AwsInstance"
+        },
+        "AllocationId": {
+          "Ref": "EIPId"
+        }
+      }
+    },
+    "AwsInstance": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+        "ImageId": {
+          "Ref": "AmiId"
+        },
+        "SecurityGroupIds": {
+          "Ref": "SecurityGroupIds"
+        },
+        "InstanceType": {
+          "Ref": "InstanceType"
+        },
+        "KeyName": {
+          "Ref": "KeyName"
+        }
+      }
+    }
+  }
+}
