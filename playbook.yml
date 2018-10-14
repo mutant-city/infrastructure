@@ -1,5 +1,5 @@
 - name: Configure nick_aws
-  hosts: nick_aws
+  hosts: nick-aws
   remote_user: ubuntu
   roles:
     - environment
