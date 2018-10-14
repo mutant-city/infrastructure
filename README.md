@@ -1,7 +1,11 @@
 # A basic IaaC to build a wordpress server
 
 - requires storm-ssh installed
-- configure your settings in the variable at the top of the build-server.sh and delete-server.sh scripts
+- configure your settings in
+
+  1. the variables at the top of the build-server.sh and
+  2. the variables at the top of the delete-server.sh scripts
+  3. ./cloudformation/parameters.json file
 
 - run `sh build.sh` to build the server
   - this will setup the server in AWS install ssh key access locally
