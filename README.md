@@ -1,6 +1,7 @@
 # A basic IaaC to build a wordpress server
 
 - requires storm-ssh installed
+  - https://github.com/emre/storm
 - configure your settings in
 
   1. the variables at the top of the build-server.sh
