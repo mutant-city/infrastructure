@@ -10,7 +10,7 @@
     login_user={{login_user}}
     login_password={{login_password}}
     password={{ wp_mysql_password }}
-    priv=*.*:ALL
+    priv={{ wp_mysql_db }}.*:ALL
   become: yes
 
 - name: Download WordPress
@@ -49,7 +49,7 @@
 
 - name: Copy nginx config to sites-available
   template:
-    src:  wordpress.conf
+    src: wordpress.conf
     dest: /etc/nginx/sites-available/{{ wp_conf_name_nginx }}
     owner: root
     group: root
