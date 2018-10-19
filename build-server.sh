@@ -7,14 +7,12 @@ STACK_NAME=nick-aws
 aws cloudformation create-stack --stack-name $STACK_NAME --template-body file://cloudformation/ec2.json  --parameters file://cloudformation/parameters.json
 
 # ssh keys
+# checks if storm has the stack-name/ssh key name present in its ssh config and deletes
 if [[ `storm list` == *$STACK_NAME* ]]; then storm delete $STACK_NAME; fi
 storm add $STACK_NAME --id_file $SERVER_KEY_DIR  ubuntu@$SERVER_IP:22
 
 # remove the cached key for the old server at this ip
 ssh-keygen -R $SERVER_IP
 
-# install python for ansible(-o skips asking if want to add to key file)
-ssh -o "StrictHostKeyChecking no" $STACK_NAME sudo apt -y install python
-
 # removes any retry playbooks
-if [ -f ./playbook.retry ]; then rm playbook.retry; fi
+if [ -f ./*.retry ]; then rm *.retry; fi

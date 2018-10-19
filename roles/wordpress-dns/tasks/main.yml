@@ -1,0 +1,67 @@
+- name: Create snippets folder for nginx
+  file: path=/etc/nginx/snippets
+    state=directory
+  become: true
+
+- name: Copy nginx http config to sites-available
+  template:
+    src: wordpress-http.conf
+    dest: /etc/nginx/sites-available/{{ http_conf_name_nginx }}
+    owner: root
+    group: root
+  become: true
+
+- name: Copy nginx https config to sites-available
+  template:
+    src: wordpress-https.conf
+    dest: /etc/nginx/sites-available/{{ https_conf_name_nginx }}
+    owner: root
+    group: root
+  become: true
+
+- name: Copy main-config to sites-available
+  template:
+    src: main-config.conf
+    dest: /etc/nginx/snippets
+    owner: root
+    group: root
+  become: true
+
+- name: Copy ssl-config to sites-available
+  template:
+    src: ssl-config.conf
+    dest: /etc/nginx/snippets
+    owner: root
+    group: root
+  become: true
+
+- name: Create symbolic link in sites-enabled for http conf.
+  file:
+    src: /etc/nginx/sites-available/{{ http_conf_name_nginx }}
+    dest: /etc/nginx/sites-enabled/{{ http_conf_name_nginx }}
+    state: link
+  become: true
+
+- name: restart nginx
+  service:
+    name: nginx
+    state: restarted
+  become: true
+
+- name: Create certificate
+  shell: ./certbot-auto certonly --webroot -w /var/www/{{ hostname }} -d {{ hostname }} --non-interactive --agree-tos --email {{ service_admin_email }}
+  args:
+    chdir: /opt/certbot
+
+- name: Create symbolic link in sites-enabled for https conf.
+  file:
+    src: /etc/nginx/sites-available/{{ https_conf_name_nginx }}
+    dest: /etc/nginx/sites-enabled/{{ https_conf_name_nginx }}
+    state: link
+  become: true
+
+- name: restart nginx
+  service:
+    name: nginx
+    state: restarted
+  become: true

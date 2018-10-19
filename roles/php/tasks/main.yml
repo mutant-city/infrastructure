@@ -5,10 +5,18 @@
     state: present
     validate_certs: no
 
+- name: Update packages
+  become: true
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
 - name: Install php7.2 and deps
   become: true
   become_user: root
-  apt: name={{ item }} state=present
+  apt:
+    name: "{{ item }}"
+    state: present
   with_items:
     - php7.2
     - php7.2-fpm

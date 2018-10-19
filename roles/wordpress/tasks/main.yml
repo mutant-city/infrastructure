@@ -3,7 +3,7 @@
     state=present
     login_user={{login_user}}
     login_password={{login_password}}
-  become: yes
+  become: true
 
 - name: Create mysql wordpress user
   mysql_user: name={{ wp_mysql_user }}
@@ -11,7 +11,7 @@
     login_password={{login_password}}
     password={{ wp_mysql_password }}
     priv={{ wp_mysql_db }}.*:ALL
-  become: yes
+  become: true
 
 - name: Download WordPress
   get_url: url=https://wordpress.org/latest.tar.gz
@@ -22,22 +22,22 @@
   unarchive: src=/tmp/wordpress.tar.gz
     dest=/tmp/
     copy=no
-  become: yes
+  become: true
 
 - name: Ensures Directory and all containing files are deleted before re-installing. (Maintain Idempotence)
   file: path={{ wp_directory }} state=absent
-  become: yes
+  become: true
 
 - name: Creates directory
   file: path={{ wp_directory }}
     state=directory
-  become: yes
+  become: true
 
 # use shell module instead of command module to allow globbing
 # https://stackoverflow.com/questions/43876766/how-can-i-move-all-files-in-a-directory-to-another-using-ansible-module
 - name: Move wordpress
   shell: mv /tmp/wordpress/* {{ wp_directory }}
-  become: yes
+  become: true
 
 - name: Copy wp-config to wordpress
   template:
@@ -45,25 +45,4 @@
     dest: "{{ wp_directory }}"
     owner: root
     group: root
-  become: yes
-
-- name: Copy nginx config to sites-available
-  template:
-    src: wordpress.conf
-    dest: /etc/nginx/sites-available/{{ wp_conf_name_nginx }}
-    owner: root
-    group: root
-  become: yes
-
-- name: Create symbolic link in sites-enabled.
-  file:
-    src: /etc/nginx/sites-available/{{ wp_conf_name_nginx }}
-    dest: /etc/nginx/sites-enabled/{{ wp_conf_name_nginx }}
-    state: link
-  become: yes
-
-- name: restart nginx
-  service:
-    name: nginx
-    state: restarted
-  become: yes
+  become: true

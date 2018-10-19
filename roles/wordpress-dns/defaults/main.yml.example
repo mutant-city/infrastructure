@@ -1,0 +1,6 @@
+# file structure
+wp_directory: /var/www/mutant.city
+wp_conf_name_nginx: mutantcity.conf
+
+# dns(nginx will automaticall add vhosts for the root domain and www.rootdomain)
+hostname: mutant.city

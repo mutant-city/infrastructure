@@ -5,4 +5,4 @@ aws cloudformation delete-stack --stack-name $STACK_NAME
 storm delete $STACK_NAME
 ssh-keygen -R $SERVER_IP
 # removes any retry playbooks
-if [ -f ./playbook.retry ]; then rm playbook.retry; fi
+if [ -f ./*.retry ]; then rm *.retry; fi
