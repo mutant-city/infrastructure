@@ -21,7 +21,7 @@
   3. ./cloudformation/parameters.json file
 
 - configure your variables in the defaults files of the ansible roles
-  - note: use ansible-vault of some other way to secure private information
+  - note: be sure to use ansible-vault or some other way to secure private information!
 
 ## Run
 

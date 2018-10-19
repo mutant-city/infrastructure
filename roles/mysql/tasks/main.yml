@@ -6,12 +6,13 @@
   debconf: name='mysql-server' question='mysql-server/root_password_again' value='{{ mysql_root_pass | quote }}' vtype='password'
   become: true
 
-- name: Install Mysql package
+- name: Install Mysql package and python mysql for ansible mysql_db module functionality
   become: true
   apt: name={{ item }} state=present
   with_items:
     - mysql-server
     - mysql-client
+    - python-mysqldb
 
 - name: start mysql
   become: true

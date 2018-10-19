@@ -1,4 +1,6 @@
 # defaults file for mysql
+# put things needing reusability and/or security here
+# use this file as a base to configure an ansible vault main.yml
 
 # preconfigured root database passwords to configure database
 login_user: root
@@ -22,11 +24,11 @@ wp_conf_name_nginx: mutantcity.conf
 # wp-conf keys
 # You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
 # Note: be wary of an opening and closing { or } in your salt, it can cause errors: template error while templating string: tag name expected
-AUTH_KEY: "EZN?gKKS6HzG|N:-fA^K2.;9;}`3V|/.oE}j=4rYyIS|yp^3eTG.7fD1Xy@f;A)a"
-SECURE_AUTH_KEY: "FJwAhLb~4BfS%1VFti|{-(]^JHN;{7WD,vLbT8A9q2aGNQ8|ifwY4(`]V6w#I~#w"
-LOGGED_IN_KEY: "=uyj:z  v8+CN5Bu3,H+MJ7c`1_*z,PL#nPaqj;=HUF%H NoEOyY`1tsJB=|}FKd"
-NONCE_KEY: "8TTR )8TKM+gi/6GK7J-|ecCn%,z6AS[N>-HJiAdP.PRu4TIX0*T^-8jE],x=0et"
-AUTH_SALT: "|S LsJ>qza6^:.zn8JQ,<7h:Kp< H&P3n&%AWA&Z1>f0M|rUr`7b@|V:%71$d9%J"
-SECURE_AUTH_SALT: "l-@=E+Aa.)hero1Z*Gc 0j/w/tYW9_JTl.8*;N([?ft:H57=<~Y6o~fhP(rbj,|`"
-LOGGED_IN_SALT: "Pi8ix-eYD%N^/~q-GO_yyLu8|0v4-8v/bIL[4d:ymfe*D@cxSk+41@x:+<JZE5 ="
-NONCE_SALT: "Pi8ix-eYD%N^/~q-GO_yyLu8|0v4-8v/bIL[4d:ymfe*D@cxSk+41@x:+<JZE5 ="
+AUTH_KEY: "changeme"
+SECURE_AUTH_KEY: "changeme"
+LOGGED_IN_KEY: "changeme"
+NONCE_KEY: "changeme"
+AUTH_SALT: "changeme"
+SECURE_AUTH_SALT: "changeme"
+LOGGED_IN_SALT: "changeme"
+NONCE_SALT: "changeme"
