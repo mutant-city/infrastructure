@@ -1,4 +1,26 @@
 # defaults file for mysql
+
+# database
 wp_mysql_db: wordpress
 wp_mysql_user: wordpress
 wp_mysql_password: randompassword
+wp_db_host: localhost
+login_user: root
+login_password: root
+
+# file structure
+wp_directory: /var/www/mutant.city
+wp_conf_name_nginx: mutantcity.conf
+
+# wp-conf keys
+# You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
+# Note: be wary of an opening and closing { or } in your salt, it can cause errors: template error while templating string: tag name expected
+
+AUTH_KEY: '4n$RD*;S5C91s5M a8KXK6d me)T;ww4kV65SF%pXEK<1B[,8;D%52oCG0r$KeWY'
+SECURE_AUTH_KEY: ' ]r-DCV[K&^NpE2??=@G%;{?I.{y:&)glLzDCmGrffM4tw<37/3Wu1p4*hLhQ%uR'
+LOGGED_IN_KEY: 'KBLb@>#[wuo6A.#S(kT`IzNFpPn-k&b>pD4QI_HB J0LV2B}L*w0AYCLfp<r^1cB'
+NONCE_KEY: '6V.CU:I_eCTClc(l|-6=H|D;D)dWeIhX8)^_NRr}NM&<!-jN.CKug>OOS-n/IA A'
+AUTH_SALT: 'BIc.B,Qa#,O/(Fc:,~|5i(B:xT!c6M3jDY%xeMYcbZ~X(Qs{+rMu(.TGE>t%.`N}'
+SECURE_AUTH_SALT: '?X!XNz]<%@!(nGPy0Tx|@OUZ684~nLY|8uW:  K2fBK4AWK591<2r11,8)pIKSg1'
+LOGGED_IN_SALT: '?J9sQRZ@b4`SbbUE4Bz&ypR^HHb,kVt@Oz[!X~m3n9,~~$L*{z4hB]mSA`n>%!EL'
+NONCE_SALT: 'H_&1=@=:HDIYH<`cI8C()8C0f~XGGsX !i`MY#WySkU<ic.oPBte1],Co{RJ!@AG'

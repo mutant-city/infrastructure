@@ -1,0 +1,5 @@
+- name: Configure nick_aws wordpress only
+  hosts: nick-aws
+  remote_user: ubuntu
+  roles:
+    - wordpress

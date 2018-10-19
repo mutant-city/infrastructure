@@ -22,4 +22,8 @@
     - php7.2-xml
     - php7.2-xmlrpc
 
-  notify: restart php7.2-fpm
+- name: restart php-fpm
+  service:
+    name: php7.2-fpm
+    state: restarted
+  become: yes
