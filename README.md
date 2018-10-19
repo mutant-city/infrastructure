@@ -12,7 +12,7 @@
 
   - https://github.com/emre/storm
 
-## to configure
+## To configure
 
 - configure your cloudformation settings in
 
@@ -28,7 +28,6 @@
 1. run `sh build.sh` to build the server
 
 - this will setup the server using Cloudformation and install ssh key access locally
-- note: this has a step that requires you to wait for the Stack to be successfully created before pressing enter to run ansible
 
 2. `ansible-playbook --vault-id @prompt playbook.yml`
    - note: use the prompt or file method if you have any ansible-vault created configs(nothing should be plaintext)

@@ -13,9 +13,6 @@ storm add $STACK_NAME --id_file $SERVER_KEY_DIR  ubuntu@$SERVER_IP:22
 # remove the cached key for the old server at this ip
 ssh-keygen -R $SERVER_IP
 
-# pause here for stack creation
-read -p "Press enter when the EC2 Instance creation is complete."
-
 # install python for ansible(-o skips asking if want to add to key file)
 ssh -o "StrictHostKeyChecking no" $STACK_NAME sudo apt -y install python
 
