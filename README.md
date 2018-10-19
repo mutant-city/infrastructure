@@ -1,16 +1,39 @@
 # A basic IaaC to build a wordpress server
 
+## Notes
+
+- Each of these roles is a complete module.
+  - The only interactions it should have with other modules is via defaults variables.
+  - This provides a drag and drop solution that can be moved to future ansible playbooks easily.
+
+## dependencies
+
 - requires storm-ssh installed
+
   - https://github.com/emre/storm
-  
-- configure your settings in
+
+## to configure
+
+- configure your cloudformation settings in
 
   1. the variables at the top of the build-server.sh
   2. the variables at the top of the delete-server.sh scripts
   3. ./cloudformation/parameters.json file
 
-- run `sh build.sh` to build the server
-  - this will setup the server in AWS install ssh key access locally
-  - note: this has a step that requires you to press enter once the Stack has been successfully created
+- configure your variables in the defaults files of the ansible roles
+  - note: use ansible-vault of some other way to secure private information
 
-* run `sh delete.sh` to delete the server
+## To Run
+
+1. run `sh build.sh` to build the server
+
+- this will setup the server using Cloudformation and install ssh key access locally
+- note: this has a step that requires you to wait for the Stack to be successfully created before pressing enter to run ansible
+
+2. `ansible-playbook --vault-id @prompt playbook.yml`
+   - note: use the prompt or file method if you have any ansible-vault created configs(nothing should be plaintext)
+   - https://docs.ansible.com/ansible/2.4/vault.html
+
+## Delete everything
+
+- run `sh delete.sh` to delete the server

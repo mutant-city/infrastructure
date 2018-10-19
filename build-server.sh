@@ -21,6 +21,3 @@ ssh -o "StrictHostKeyChecking no" $STACK_NAME sudo apt -y install python
 
 # removes any retry playbooks
 if [ -f ./playbook.retry ]; then rm playbook.retry; fi
-
-# ansible
-ansible-playbook ./playbook.yml
