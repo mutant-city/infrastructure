@@ -6,13 +6,13 @@
   - The only interactions it should have with other modules is via defaults variables.
   - This provides a drag and drop solution that can be moved to future ansible playbooks easily.
 
-## dependencies
+## Dependencies
 
 - requires storm-ssh installed
 
   - https://github.com/emre/storm
 
-## To configure
+## Configure
 
 - configure your cloudformation settings in
 
@@ -23,7 +23,7 @@
 - configure your variables in the defaults files of the ansible roles
   - note: use ansible-vault of some other way to secure private information
 
-## To Run
+## Run
 
 1. run `sh build.sh` to build the server
 
@@ -33,6 +33,7 @@
    - note: use the prompt or file method if you have any ansible-vault created configs(nothing should be plaintext)
    - https://docs.ansible.com/ansible/2.4/vault.html
 
-## Delete everything
+## Delete
 
 - run `sh delete.sh` to delete the server
+  - deletes the cloudformation stack and wipes EVERYTHING
