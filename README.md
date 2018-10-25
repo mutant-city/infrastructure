@@ -3,10 +3,13 @@
 ## Notes
 
 - use Ansible Vault on your variable files
+
   - https://serversforhackers.com/c/how-ansible-vault-works
   - `ansible-vault encrypt group_var/all.yml`
   - can use the prompt OR file method if you have any ansible-vault created configs(nothing should be plaintext)
     - https://docs.ansible.com/ansible/2.4/vault.html
+
+- Lets Encrypt (apparently) has a rate limit. So can simply comment wordpress-ssl out of the playbook for an http only version of the configuration. Can then add it back it when/if you think rate limiting won't be an issue(hint: it takes one week.)
 
 ## SSL Notes
 
