@@ -8,8 +8,7 @@ https_conf_name_nginx: wordpress-https.conf
 
 # dns(nginx will automaticall add vhosts for the root domain and www.rootdomain)
 hostname: mutant.city
-additional_subdomains:
-  - www.mutant.city
+# additional_subdomains
 
 # default settings as of 2018/11/01
 # /etc/letsencrypt/live/yourhostname/fullchain.pem

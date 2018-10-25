@@ -17,6 +17,12 @@ wp_db_host: localhost
 # file structure
 wp_directory: /var/www/mutant.city
 
+# nginx conf name
+http_conf_name_nginx: wordpress-http.conf
+
+# dns(nginx will automaticall add vhosts for the root domain and www.rootdomain)
+hostname: mutant.city
+
 # wp-conf keys
 # You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
 # Note: be wary of an opening and closing { or } in your salt, it can cause errors: template error while templating string: tag name expected

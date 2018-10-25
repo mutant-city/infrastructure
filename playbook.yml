@@ -8,4 +8,4 @@
     # - php
     # - lets-encrypt-base
     # - wordpress
-    - wordpress-dns
+    - wordpress-ssl

@@ -11,6 +11,14 @@
 
 - To disable http completely uncomment out the redirect line in wordpress-http.conf
 
+## SSL Notes
+
+- This only gives an A rating on SSL Labs. There are further optimizations to get an A+.
+- One optimization: Can generate dhparams key (which takes a while) to bump up score/security
+  - https://scotthelme.co.uk/squeezing-a-little-more-out-of-your-qualys-score/
+- if have time:
+  - https://gist.github.com/plentz/6737338
+
 ## Dependencies
 
 - requires storm-ssh installed
@@ -43,3 +51,7 @@
 
 - run `sh delete.sh` to delete the server
   - deletes the cloudformation stack and wipes EVERYTHING
+
+## References
+
+- https://www.nginx.com/blog/free-certificates-lets-encrypt-and-nginx/
