@@ -1,19 +1,3 @@
-- name: Set MySQL root password before installing
-  debconf:
-    name: "mysql-server"
-    question: "mysql-server/root_password"
-    value: "{{ mysql_root_pass | quote }}"
-    vtype: "password"
-  become: true
-
-- name: Confirm MySQL root password before installing
-  debconf:
-    name: "mysql-server"
-    question: "mysql-server/root_password_again"
-    value: "{{ mysql_root_pass | quote }}"
-    vtype: "password"
-  become: true
-
 - name: Install Mysql package and python mysql for ansible mysql_db module functionality
   become: true
   apt:
@@ -26,7 +10,42 @@
 
 - name: start mysql
   become: true
-  become_user: root
   systemd:
     name: mysql
     state: started
+
+# note: a little hackery here to maintain idempotence
+# https://stackoverflow.com/questions/26597926/install-mysql-with-ansible-on-ubuntu
+- name: update mysql root password for all root accounts
+  become: true
+  mysql_user:
+    name: root
+    host: "{{ item }}"
+    password: "{{ mysql_root_pass }}"
+    login_user: root
+    login_password: "{{ mysql_root_pass }}"
+    check_implicit_admin: yes
+    priv: "*.*:ALL,GRANT"
+  with_items:
+    - 127.0.0.1
+    - ::1
+    - localhost
+
+- name: Remove the MySQL test database
+  become: true
+  mysql_db:
+    db: test
+    state: absent
+    login_user: "{{mysql_root_user}}"
+    login_password: "{{mysql_root_pass}}"
+
+- name: ensure anonymous users are not in the database
+  mysql_user:
+    name: ""
+    host: "{{ item }}"
+    state: absent
+    login_user: "{{mysql_root_user}}"
+    login_password: "{{mysql_root_pass}}"
+  with_items:
+    - localhost
+    - "{{hostname}}"

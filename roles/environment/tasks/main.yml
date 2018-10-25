@@ -12,3 +12,10 @@
   with_items:
     - python
     - python-mysqldb
+
+- name: change password for root user
+  become: true
+  user:
+    name: root
+    update_password: always
+    password: "{{hashed_login_password}}"

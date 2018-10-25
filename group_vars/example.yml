@@ -1,6 +1,10 @@
 # defaults file
 # use this as an example to make your own custom version with ansible-vault
 
+# the login user info(the username is hardcoded in several tasks at the moment)
+login_user: root
+login_password: root
+
 # mysql root user(change these)
 mysql_root_user: root
 mysql_root_pass: root

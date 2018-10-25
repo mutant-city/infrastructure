@@ -1,17 +1,19 @@
 - name: Create mysql wordpress database
-  mysql_db: name={{ wp_mysql_db }}
-    state=present
-    login_user={{mysql_root_user}}
-    login_password={{mysql_root_pass}}
+  mysql_db:
+    name: "{{ wp_mysql_db }}"
+    state: present
+    login_user: "{{mysql_root_user}}"
+    login_password: "{{mysql_root_pass}}"
   become: true
 
 - name: Create mysql wordpress user
-  mysql_user: name={{ wp_mysql_user }}
-    login_user={{mysql_root_user}}
-    login_password={{mysql_root_pass}}
-    password={{ wp_mysql_password }}
-    priv={{ wp_mysql_db }}.*:ALL
   become: true
+  mysql_user:
+    name: "{{ wp_mysql_user }}"
+    login_user: "{{mysql_root_user}}"
+    login_password: "{{mysql_root_pass}}"
+    password: "{{ wp_mysql_password }}"
+    priv: "{{ wp_mysql_db }}.*:ALL"
 
 - name: Download WordPress
   get_url: url=https://wordpress.org/latest.tar.gz
