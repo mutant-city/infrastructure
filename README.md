@@ -5,6 +5,8 @@
 - use Ansible Vault on your variable files
   - https://serversforhackers.com/c/how-ansible-vault-works
   - `ansible-vault encrypt group_var/all.yml`
+  - can use the prompt OR file method if you have any ansible-vault created configs(nothing should be plaintext)
+    - https://docs.ansible.com/ansible/2.4/vault.html
 
 ## SSL Notes
 
@@ -38,9 +40,7 @@
    - this will setup the server using Cloudformation and install ssh key access locally into storm-ssh
    - wait for the stack to complete building in cloudformation. Status must = CREATE_COMPLETE before next step.
 
-2. run `sh configure-server.sh` to configure the server
-   - note: use the prompt or file method if you have any ansible-vault created configs(nothing should be plaintext)
-   - https://docs.ansible.com/ansible/2.4/vault.html
+2. run `sh configure-server.sh` to configure the server which runs all of the ansible scripts
 
 ## Delete
 
