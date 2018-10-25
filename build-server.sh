@@ -1,12 +1,12 @@
 #!/bin/bash
 SERVER_IP=34.208.204.238
 SERVER_KEY_DIR=/Users/admin/.ssh/nick-personal-aws.pem
-STACK_NAME="nick-aws-$(date +%s)"
-
+STACK_NAME=nick-aws
+AWS_STACK_NAME="$STACK_NAME-$(date +%s)"
 # cloudformation build(with timestamp)
-aws cloudformation create-stack --stack-name $STACK_NAME  --template-body file://cloudformation/ec2.json  --parameters file://cloudformation/parameters.json
+aws cloudformation create-stack --stack-name $AWS_STACK_NAME  --template-body file://cloudformation/ec2.json  --parameters file://cloudformation/parameters.json
 
-echo $STACK_NAME > stack.txt
+echo $AWS_STACK_NAME > stack.txt
 
 # ssh keys
 # checks if storm has the stack-name/ssh key name present in its ssh config and deletes
