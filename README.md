@@ -7,8 +7,6 @@
   - The only interactions it should have with other modules is via defaults variables.
   - This provides a drag and drop solution that can be moved to future ansible playbooks easily.
 
-- To disable http completely uncomment out the redirect line in wordpress-http.conf
-
 ## SSL Notes
 
 - This only gives an A rating on SSL Labs. There are further optimizations to get an A+.
