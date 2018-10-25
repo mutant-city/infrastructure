@@ -12,10 +12,10 @@ wp_mysql_user: wordpress
 wp_mysql_password: randompassword
 
 # file structure
-wp_directory: /var/www/mutant.city
+wp_directory: /var/www/yourdirectory
 
 # dns(nginx will automatically add vhosts for the root domain and www.rootdomain)
-hostname: mutant.city
+hostname: yourDNSname
 
 # wp-conf keys
 # You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
@@ -38,4 +38,4 @@ https_conf_name_nginx: wordpress-https.conf
 
 # additional_subdomains
 letsencrypt_ssl_dir: /etc/letsencrypt/live
-service_admin_email: admin@mutant.city
+service_admin_email: admin@your.site
