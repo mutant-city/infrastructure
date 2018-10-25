@@ -7,8 +7,6 @@
   - The only interactions it should have with other modules is via defaults variables.
   - This provides a drag and drop solution that can be moved to future ansible playbooks easily.
 
-- If you build an https/ssl server and then visit the site then wipe/rebuild the server you will have to clear your certificates from your browser
-
 - To disable http completely uncomment out the redirect line in wordpress-http.conf
 
 ## SSL Notes
