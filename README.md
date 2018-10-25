@@ -2,10 +2,9 @@
 
 ## Notes
 
-- Each of these roles is a complete module.
-
-  - The only interactions it should have with other modules is via defaults variables.
-  - This provides a drag and drop solution that can be moved to future ansible playbooks easily.
+- use Ansible Vault on your variable files
+  - https://serversforhackers.com/c/how-ansible-vault-works
+  - `ansible-vault encrypt group_var/all.yml`
 
 ## SSL Notes
 

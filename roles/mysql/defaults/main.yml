@@ -1,4 +1,0 @@
-# defaults file for mysql
-# use this as an example to make your own custom version with ansible-vault
-mysql_root_user: root
-mysql_root_pass: root

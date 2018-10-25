@@ -1,0 +1,41 @@
+# defaults file
+# use this as an example to make your own custom version with ansible-vault
+
+# mysql root user(change these)
+mysql_root_user: root
+mysql_root_pass: root
+
+# create a wordpress database if not exists
+wp_mysql_db: wordpress
+wp_db_host: localhost
+wp_mysql_user: wordpress
+wp_mysql_password: randompassword
+
+# file structure
+wp_directory: /var/www/mutant.city
+
+# dns(nginx will automatically add vhosts for the root domain and www.rootdomain)
+hostname: mutant.city
+
+# wp-conf keys
+# You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
+# Note: be wary of an opening and closing { or } in your salt, it can cause errors: template error while templating string: tag name expected
+AUTH_KEY: "changeme"
+SECURE_AUTH_KEY: "changeme"
+LOGGED_IN_KEY: "changeme"
+NONCE_KEY: "changeme"
+AUTH_SALT: "changeme"
+SECURE_AUTH_SALT: "changeme"
+LOGGED_IN_SALT: "changeme"
+NONCE_SALT: "changeme"
+
+# what the nginx conf files should be named on the destination server
+# can leave these defaults unless you have more than one wordpress install then these will need to be changed
+http_conf_name_nginx: wordpress-http.conf
+https_conf_name_nginx: wordpress-https.conf
+
+# dns(nginx will automaticall add vhosts for the root domain and www.rootdomain)
+
+# additional_subdomains
+letsencrypt_ssl_dir: /etc/letsencrypt/live
+service_admin_email: admin@mutant.city
