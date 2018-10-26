@@ -3,10 +3,11 @@ SERVER_IP=34.208.204.238
 SERVER_KEY_DIR=/Users/admin/.ssh/nick-personal-aws.pem
 STACK_NAME=nick-aws
 AWS_STACK_NAME="$STACK_NAME-$(date +%s)"
-# cloudformation build(with timestamp)
-aws cloudformation create-stack --stack-name $AWS_STACK_NAME  --template-body file://cloudformation/ec2.json  --parameters file://cloudformation/parameters.json
 
-echo $AWS_STACK_NAME > stack.txt
+# cloudformation build(with timestamp)
+aws cloudformation create-stack --stack-name $AWS_STACK_NAME  --template-body file://../cloudformation/ec2.json  --parameters file://../cloudformation/parameters.json
+
+echo $AWS_STACK_NAME > ../stack.txt
 
 # ssh keys
 # checks if storm has the stack-name/ssh key name present in its ssh config and deletes
@@ -17,4 +18,7 @@ storm add $STACK_NAME --id_file $SERVER_KEY_DIR  ubuntu@$SERVER_IP:22
 ssh-keygen -R $SERVER_IP
 
 # removes any retry playbooks
-if [ -f ./*.retry ]; then rm *.retry; fi
+if [ -f ../*.retry ]; then rm ../*.retry; fi
+
+# checks the stack status
+sh stack-status.sh

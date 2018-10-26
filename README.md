@@ -23,6 +23,7 @@
 
 - requires storm-ssh installed
 - require aws-cli installed
+- requires jq json command line parser
 
   - https://github.com/emre/storm
 
