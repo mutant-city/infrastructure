@@ -31,7 +31,7 @@
     state: restarted
   become: true
 
-- name: Create certificate (may take a minute or two)
+- name: Create certificate (may take a minute or two) Note-> Theres a limite of certificates you're allowed per week!
   shell: ./certbot-auto certonly --webroot -w /var/www/{{ hostname }} -d {{ hostname }} --non-interactive --agree-tos --email {{ service_admin_email }}
   args:
     chdir: /opt/certbot

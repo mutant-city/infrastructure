@@ -8,5 +8,5 @@
     - php
     - lets-encrypt-base
     - wordpress
-    # - wordpress-ssl
+    - wordpress-ssl
     - crons
