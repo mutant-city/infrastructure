@@ -9,7 +9,7 @@
   },
   {
     "ParameterKey": "SecurityGroupIds",
-    "ParameterValue": "sg-cd857dbe"
+    "ParameterValue": "sg-03026a4997e4a2ceb"
   },
   {
     "ParameterKey": "KeyName",

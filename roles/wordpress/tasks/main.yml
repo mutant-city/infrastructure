@@ -16,23 +16,28 @@
     priv: "{{ wp_mysql_db }}.*:ALL"
 
 - name: Download WordPress
-  get_url: url=https://wordpress.org/latest.tar.gz
-    dest=/tmp/wordpress.tar.gz
-    validate_certs=no
+  get_url:
+    url: https://wordpress.org/latest.tar.gz
+    dest: /tmp/wordpress.tar.gz
+    validate_certs: no
 
 - name: Extract WordPress
-  unarchive: src=/tmp/wordpress.tar.gz
-    dest=/tmp/
-    copy=no
+  unarchive:
+    src: /tmp/wordpress.tar.gz
+    dest: /tmp/
+    copy: no
   become: true
 
 - name: Ensures Directory and all containing files are deleted before re-installing. (Maintain Idempotence)
-  file: path={{ wp_directory }} state=absent
+  file:
+    path: "{{ wp_directory }}"
+    state: absent
   become: true
 
 - name: Creates directory
-  file: path={{ wp_directory }}
-    state=directory
+  file:
+    path: "{{ wp_directory }}"
+    state: directory
   become: true
 
 # use shell module instead of command module to allow globbing
@@ -41,17 +46,29 @@
   shell: mv /tmp/wordpress/* {{ wp_directory }}
   become: true
 
+- name: Set owner/group to www-data:www-data, permissions to 0700, for wordpress site directory
+  become: true
+  file:
+    dest: "{{ wp_directory }}"
+    owner: www-data
+    group: www-data
+    mode: 0700
+    recurse: yes
+
+# set to 400 permissions
 - name: Copy wp-config to wordpress
+  become: true
   template:
     src: wp-config.php
     dest: "{{ wp_directory }}"
-    owner: root
-    group: root
-  become: true
+    owner: www-data
+    group: www-data
+    mode: 400
 
-- name: Create snippets folder for nginx
-  file: path=/etc/nginx/snippets
-    state=directory
+- name: Create snippets folder for nginx if not exists
+  file:
+    path: /etc/nginx/snippets
+    state: directory
   become: true
 
 - name: Copy nginx http config to sites-available
@@ -82,10 +99,3 @@
     name: nginx
     state: restarted
   become: true
-
-- name: cron job to back up wordpress weekly
-  become: true
-  cron:
-    name: "Backup Wordpress Database"
-    special_time: weekly
-    job: "mysqldump -u {{ wp_mysql_user }} -p {{ wp_mysql_password  }} database_name {{ wp_mysql_db }}"

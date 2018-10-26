@@ -9,3 +9,4 @@
     - lets-encrypt-base
     - wordpress
     # - wordpress-ssl
+    - crons

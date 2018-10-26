@@ -53,4 +53,12 @@
 
 ## References
 
+### Nginx Conf
+- https://github.com/Leo-G/DevopsWiki/wiki/How-to-Install---Wordpress-with-Nginx,-PHP-FPM-and-MariaDB-on-Ubuntu-14.04-(LEMP)
+- https://www.nginx.com/resources/wiki/start/topics/recipes/wordpress/
+- https://codex.wordpress.org/Nginx
+- https://github.com/tucsonlabs/ansible-playbook-wordpress-nginx/blob/master/roles/nginx/templates/nginx-wp-common.conf
+
+### SSL
+- https://reinhard.codes/2017/01/27/setting-up-nginx-and-letsencrypt-on-a-homeserver-using-ansible/
 - https://www.nginx.com/blog/free-certificates-lets-encrypt-and-nginx/

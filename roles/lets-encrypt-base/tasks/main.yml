@@ -6,12 +6,4 @@
     force: yes
   become: true
 
-# note: name is required here to prevent duplicates
-- name: Add crontab to renew certificates
-  cron:
-    minute: "30"
-    hour: "2"
-    weekday: "1"
-    job: /opt/certbot/certbot-auto renew >> /var/log/letsencrypt-renew.log
-    name: a job to recheck certificates
-  become: true
+# note: cron job as well
