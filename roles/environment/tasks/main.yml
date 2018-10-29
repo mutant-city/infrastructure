@@ -12,6 +12,7 @@
   with_items:
     - python
     - python-mysqldb
+    - npm
 
 - name: change password for root user
   become: true
