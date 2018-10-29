@@ -1,4 +1,4 @@
-# A basic IaaC to build a wordpress server
+# A basic IaC to build a wordpress server
 
 ## Notes
 
